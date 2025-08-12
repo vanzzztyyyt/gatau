@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Untuk Amel ❤️ — Dari Reivan Ganteng</title>
+<style>
+  /* ========== Reset & Base ========== */
+  :root{
+    --bg-1: #0b1020;
+    --bg-2: #2b0242;
+    --card-bg: rgba(255,255,255,0.03);
+    --accent: #ff4d94;
+    --glass: rgba(255,255,255,0.06);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:#fff;background: radial-gradient(1200px 800px at 10% 10%, rgba(255,50,130,0.08), transparent),
+    linear-gradient(180deg,var(--bg-1),var(--bg-2)); overflow:hidden; -webkit-font-smoothing:antialiased;}
+  a{color:inherit}
+
+  /* ========== Container ========== */
+  .wrap{
+    position:relative;
+    z-index:6;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    text-align:center;
+  }
+  .card{
+    width:100%;
+    max-width:820px;
+    padding:28px;
+    border-radius:18px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    box-shadow: 0 20px 50px rgba(2,6,23,0.6);
+    backdrop-filter: blur(6px);
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* ========== Title & Signature ========== */
+  h1{
+    margin:0;
+    font-size:28px;
+    letter-spacing:0.6px;
+    text-shadow: 0 6px 20px rgba(255,77,148,0.12);
+    color: #ffd6ef;
+  }
+  .sub{
+    margin-top:8px;
+    margin-bottom:18px;
+    color:#ffd6ef;
+    opacity:0.95;
+    font-weight:600;
+    font-size:14px;
+  }
+
+  /* ========== Typing / Rainbow Text ========== */
+  .typing-wrap{
+    margin: 8px auto 12px;
+    max-width:760px;
+    min-height:84px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:12px 18px;
+    border-radius:12px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+  }
+  #typing {
+    font-size:18px;
+    line-height:1.5;
+    white-space:pre-wrap;
+    text-align:center;
+    font-weight:600;
+    letter-spacing:0.2px;
+    max-width:90%;
+  }
+  /* rainbow text via background-clip */
+  .rainbow {
+    background-image: linear-gradient(90deg, #ff4d94, #ffb347, #ffd93d, #5ae3a3, #6ec1ff, #c89bff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display:inline-block;
+  }
+
+  /* blinking caret */
+  .caret{
+    display:inline-block;
+    width:2px;
+    background:#ffd6ef;
+    margin-left:6px;
+    animation: blink 1s steps(2,end) infinite;
+    vertical-align:bottom;
+    height:1.25em;
+    border-radius:2px;
+  }
+  @keyframes blink{50%{opacity:0}}
+
+  /* ========== Controls ========== */
+  .controls{ display:flex; gap:10px; justify-content:center; margin-top:12px; align-items:center; flex-wrap:wrap; }
+  .btn{
+    padding:8px 14px;
+    border-radius:12px;
+    border:0;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow: 0 8px 18px rgba(2,6,23,0.6);
+  }
+  .btn-play{ background: linear-gradient(90deg,#ff7fb0,#ff3d84); color:white; }
+  .btn-pause{ background: rgba(255,255,255,0.06); color:#ffd6ef; border:1px solid rgba(255,255,255,0.04); }
+  .btn-small{ padding:6px 10px; font-size:13px; border-radius:10px; }
+
+  /* ========== Signature ========== */
+  .signature{
+    margin-top:12px;
+    color:#ffb1d0;
+    font-size:15px;
+    font-weight:800;
+    letter-spacing:0.6px;
+    text-shadow: 0 6px 30px rgba(255,77,148,0.08);
+  }
+
+  /* ========== Hearts ========== */
+  .heart {
+    position:fixed;
+    pointer-events:none;
+    z-index:7;
+    transform:translate(-50%,-50%) rotate(45deg);
+    filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35));
+  }
+  .heart:before,.heart:after{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    background:linear-gradient(180deg,#ff9fc4,#ff3d84);
+    left:0; top:0;
+  }
+
+  /* ========== Planets Canvas ========== */
+  canvas#space {
+    position:fixed;
+    inset:0;
+    z-index:1;
+    display:block;
+  }
+
+  /* ========== Overlay / Start (for autoplay) ========== */
+  .overlay{
+    position:fixed; inset:0; z-index:9; display:flex; align-items:center; justify-content:center;
+    background: linear-gradient(180deg, rgba(5,5,10,0.6), rgba(5,5,10,0.7));
+  }
+  .open-box{
+    padding:18px 22px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); text-align:center;
+    box-shadow: 0 18px 60px rgba(2,6,23,0.7);
+  }
+  .open-box h3{ margin:0 0 8px 0; color:#ffd6ef; }
+  .muted-note{ font-size:13px; color:#ffd6ef; opacity:0.9; margin-bottom:12px; }
+
+  /* ========== Responsive ========== */
+  @media (max-width:520px){
+    h1{ font-size:20px }
+    #typing{ font-size:15px }
+    .signature{ font-size:14px }
+    .card{ padding:18px; border-radius:14px }
+  }
+</style>
+</head>
+<body>
+  <!-- Planets canvas (background) -->
+  <canvas id="space"></canvas>
+
+  <div class="wrap">
+    <div class="card" role="main" aria-live="polite">
+      <h1>Untuk <span style="color:#fff;text-shadow:0 8px 30px rgba(110,190,255,0.06)">Amel</span> 💖</h1>
+      <div class="sub">Buka ini pas santai — biar suasana makin manis ✨</div>
+
+      <div class="typing-wrap" aria-hidden="false">
+        <div id="typing" aria-label="pesan romantis">
+          <!-- typed text will appear here -->
+        </div>
+        <span id="caret" class="caret" aria-hidden="true"></span>
+      </div>
+
+      <div class="controls">
+        <button id="openBtn" class="btn btn-play btn-small">Buka & Putar Musik</button>
+        <button id="playBtn" class="btn btn-play btn-small" style="display:none;">Putar</button>
+        <button id="pauseBtn" class="btn btn-pause btn-small" style="display:none;">Jeda</button>
+        <button id="sendBtn" class="btn btn-pause btn-small">Kirim 💌</button>
+      </div>
+
+      <div class="signature">— Dari Reivan Ganteng 😎</div>
+    </div>
+  </div>
+
+  <!-- Audio: sample free MP3 (ganti jika mau) -->
+  <audio id="bgm" loop preload="auto">
+    <!-- Ganti src ini dengan link MP3 favoritmu jika perlu -->
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- overlay shown initially to ensure user gesture (some browsers block autoplay) -->
+  <div id="overlay" class="overlay" aria-hidden="false" role="dialog" aria-label="Mulai">
+    <div class="open-box" role="document">
+      <h3>Untuk Amel 💖</h3>
+      <div class="muted-note">Klik "Buka & Putar Musik" untuk memulai — semua efek akan aktif.</div>
+      <button id="overlayOpen" class="btn btn-play">Buka & Putar Musik</button>
+    </div>
+  </div>
+
+<script>
+/* ============================
+   CONFIG: ganti sesuai selera
+   ============================ */
+const loverName = "Amel";
+const signer = "Reivan Ganteng";
+const messages = [
+  `Hai ${loverName}...`,
+  "Kadang aku mikir, aku nggak perlu alasan buat ngerasa bahagia — cukup bayangin kamu.",
+  "Kamu itu bikin hari-hari aku berwarna. Senyummu sederhana tapi pengaruhnya besar.",
+  "Mau nggak kamu jadi teman hidup aku, dari hari ini sampai nanti?",
+  "Kalau iya... ketuk 'Kirim 💌' ya ❤️"
+];
+const typingSpeed = 36; // ms per char
+/* ============================ */
+
+/* ---------- Typing & Rainbow color ---------- */
+const typingEl = document.getElementById('typing');
+const caret = document.getElementById('caret');
+
+function wrapRainbow(text){
+  // wrap whole string in rainbow span using CSS gradient
+  const span = document.createElement('span');
+  span.className = 'rainbow';
+  span.textContent = text;
+  return span;
+}
+
+let msgIdx = 0, charIdx = 0, typingTimer = null;
+function clearTyping(){
+  typingEl.innerHTML = '';
+  msgIdx = 0; charIdx = 0;
+}
+function typeLoop(){
+  if(msgIdx >= messages.length) {
+    // finished, keep last message and stop caret blink after short delay
+    caret.style.display = 'none';
+    return;
+  }
+  const cur = messages[msgIdx];
+  if(charIdx < cur.length){
+    // append next character
+    typingEl.textContent = cur.slice(0, charIdx+1);
+    // apply rainbow style on whole text
+    const rainbow = wrapRainbow(typingEl.textContent);
+    typingEl.innerHTML = '';
+    typingEl.appendChild(rainbow);
+    charIdx++;
+    typingTimer = setTimeout(typeLoop, typingSpeed);
+  } else {
+    // finished this message: pause then add newline and proceed
+    msgIdx++; charIdx = 0;
+    setTimeout(()=> {
+      typingEl.innerHTML += "\n\n";
+      typeLoop();
+    }, 700);
+  }
+}
+
+/* ---------- Hearts falling (DOM) ---------- */
+function spawnHeart() {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  const size = 12 + Math.random()*28;
+  heart.style.width = size + 'px';
+  heart.style.height = size + 'px';
+  heart.style.left = (5 + Math.random()*90) + 'vw';
+  heart.style.top = (-10 - Math.random()*10) + 'vh';
+  heart.style.opacity = (0.6 + Math.random()*0.4);
+  const dur = 3 + Math.random()*3;
+  heart.style.transition = `transform ${dur}s linear, top ${dur}s linear, opacity ${dur}s linear`;
+  document.body.appendChild(heart);
+  // give it movement via transform to avoid layout thrash
+  requestAnimationFrame(()=> {
+    heart.style.transform = `translateY(${110 + Math.random()*30}vh) rotate(${30 - Math.random()*60}deg)`;
+    heart.style.opacity = '0';
+  });
+  setTimeout(()=> heart.remove(), (dur+0.6)*1000);
+}
+let heartInterval = null;
+function startHearts(){ if(!heartInterval) heartInterval = setInterval(spawnHeart, 350); }
+function stopHearts(){ clearInterval(heartInterval); heartInterval = null; }
+
+/* ---------- Planets on canvas (lightweight) ---------- */
+const canvas = document.getElementById('space');
+const ctx = canvas.getContext('2d');
+function resizeCanvas(){ canvas.width = innerWidth; canvas.height = innerHeight; }
+resizeCanvas(); window.addEventListener('resize', resizeCanvas);
+
+const planetCount = Math.max(10, Math.floor((innerWidth*innerHeight)/80000)); // scale with screen
+const planets = [];
+for(let i=0;i<planetCount;i++){
+  planets.push({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    r: 6 + Math.random()*36,
+    dx: (Math.random()-0.5)*0.35,
+    dy: (Math.random()-0.5)*0.35,
+    hue: Math.floor(Math.random()*360),
+    alpha: 0.35 + Math.random()*0.6,
+    orbitOffset: Math.random()*Math.PI*2,
+  });
+}
+function draw(){
+  // subtle starfield
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  // faint stars
+  for(let i=0;i<30;i++){
+    ctx.fillStyle = `rgba(255,255,255,${0.02 + (i%7)/150})`;
+    ctx.fillRect((i*47 + (Date.now()/50)%canvas.width)%canvas.width, (i*73)%canvas.height, 1,1);
+  }
+  // planets
+  for(let p of planets){
+    ctx.beginPath();
+    // motion
+    p.x += p.dx + Math.cos((Date.now()/8000)+p.orbitOffset)*0.05;
+    p.y += p.dy + Math.sin((Date.now()/8000)+p.orbitOffset)*0.05;
+    // wrap
+    if(p.x < -p.r) p.x = canvas.width + p.r;
+    if(p.x > canvas.width + p.r) p.x = -p.r;
+    if(p.y < -p.r) p.y = canvas.height + p.r;
+    if(p.y > canvas.height + p.r) p.y = -p.r;
+    // gradient fill
+    const g = ctx.createRadialGradient(p.x - p.r/3, p.y - p.r/3, p.r*0.1, p.x, p.y, p.r);
+    g.addColorStop(0, `hsla(${p.hue},85%,75%,${p.alpha})`);
+    g.addColorStop(0.6, `hsla(${(p.hue+20)%360},75%,55%,${p.alpha*0.95})`);
+    g.addColorStop(1, `rgba(0,0,0,0.05)`);
+    ctx.fillStyle = g;
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+    ctx.fill();
+    // ring for some planets
+    if(p.r > 20 && Math.random() > 0.7){
+      ctx.beginPath();
+      ctx.strokeStyle = `rgba(255,255,255,0.03)`;
+      ctx.lineWidth = Math.max(1, p.r/10);
+      ctx.ellipse(p.x, p.y, p.r*1.6, p.r*0.6, Math.PI/6, 0, Math.PI*2);
+      ctx.stroke();
+    }
+  }
+  requestAnimationFrame(draw);
+}
+draw();
+
+/* ---------- Audio controls & overlay ---------- */
+const bgm = document.getElementById('bgm');
+const overlay = document.getElementById('overlay');
+const overlayOpen = document.getElementById('overlayOpen');
+const openBtn = document.getElementById('openBtn');
+const playBtn = document.getElementById('playBtn');
+const pauseBtn = document.getElementById('pauseBtn');
+const sendBtn = document.getElementById('sendBtn');
+
+async function startAll(){
+  // hide overlay
+  overlay.style.display = 'none';
+  // try to play audio (some browsers require user gesture - openBtn/overlayOpen handles that)
+  try{
+    await bgm.play();
+  }catch(e){
+    // ignore
+  }
+  startHearts();
+  // show smaller controls
+  openBtn.style.display = 'none';
+  playBtn.style.display = 'inline-block';
+  pauseBtn.style.display = 'inline-block';
+  // begin typing
+  typeLoop();
+}
+
+overlayOpen.addEventListener('click', startAll);
+openBtn.addEventListener('click', startAll);
+
+// fallback play/pause
+playBtn.addEventListener('click', async ()=>{ try{ await bgm.play(); startHearts(); }catch(e){} });
+pauseBtn.addEventListener('click', ()=>{ bgm.pause(); stopHearts(); });
+
+bgm.addEventListener('play', ()=>{ playBtn.style.display='none'; pauseBtn.style.display='inline-block'; });
+bgm.addEventListener('pause', ()=>{ pauseBtn.style.display='none'; play
