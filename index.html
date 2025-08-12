@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dari Reivan Ganteng untuk Amel 💖</title>
+<style>
+    body {
+        background: linear-gradient(to bottom, #000011, #220033);
+        color: white;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        overflow-x: hidden;
+    }
+    h1 {
+        text-shadow: 2px 2px 10px pink;
+        animation: rainbow 3s infinite linear;
+    }
+    @keyframes rainbow {
+        0%{color: red;} 20%{color: orange;} 40%{color: yellow;}
+        60%{color: green;} 80%{color: blue;} 100%{color: violet;}
+    }
+    .btn {
+        display: inline-block;
+        margin: 10px;
+        padding: 15px 25px;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(45deg, #ff0066, #ffcc00);
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        box-shadow: 0 0 15px rgba(255, 0, 102, 0.7);
+        transition: all 0.3s ease;
+    }
+    .btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 25px rgba(255, 255, 255, 1);
+    }
+    .falling {
+        position: fixed;
+        top: -50px;
+        animation: fall linear infinite;
+    }
+    @keyframes fall {
+        0% {transform: translateY(-50px) rotate(0deg);}
+        100% {transform: translateY(100vh) rotate(360deg);}
+    }
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0,0,0,0.8);
+        padding: 20px;
+        border-radius: 15px;
+        max-width: 80%;
+    }
+    .popup p {
+        font-size: 18px;
+        color: pink;
+    }
+</style>
+</head>
+<body>
+
+<h1>💖 Dari Reivan Ganteng untuk Amel 💖</h1>
+
+<button class="btn" onclick="showUcapan()">Ucapan 💌</button>
+<button class="btn" onclick="playVideo()">Putar Video 🎥</button>
+<button class="btn" onclick="showBucin()">Teks Bucin Panjang 💕</button>
+
+<div class="popup" id="popupUcapan">
+    <p>Amel, kamu itu seperti bintang... indah, tapi nggak semua orang bisa punya 💖</p>
+    <button class="btn" onclick="closePopup('popupUcapan')">Tutup</button>
+</div>
+
+<div class="popup" id="popupBucin">
+    <p>Amel, setiap detik yang aku lewati bersamamu adalah hadiah terindah dalam hidupku.  
+       Kamu adalah alasanku tersenyum, alasanku semangat, dan alasanku untuk terus bermimpi.  
+       Aku janji bakal jagain kamu selalu, di dunia nyata ataupun di mimpi ❤️</p>
+    <button class="btn" onclick="closePopup('popupBucin')">Tutup</button>
+</div>
+
+<script>
+function showUcapan(){
+    document.getElementById("popupUcapan").style.display = "block";
+}
+function playVideo(){
+    window.open("https://youtube.com/shorts/EqZDDOv1uz4?si=gaKWYKuaN9xcOTJV", "_blank");
+}
+function showBucin(){
+    document.getElementById("popupBucin").style.display = "block";
+}
+function closePopup(id){
+    document.getElementById(id).style.display = "none";
+}
+
+// Efek hati & planet jatuh
+setInterval(() => {
+    const emoji = Math.random() > 0.5 ? "💖" : "🪐";
+    const span = document.createElement("span");
+    span.className = "falling";
+    span.style.left = Math.random() * 100 + "vw";
+    span.style.fontSize = Math.random() * 20 + 20 + "px";
+    span.innerHTML = emoji;
+    span.style.animationDuration = Math.random() * 3 + 3 + "s";
+    document.body.appendChild(span);
+    setTimeout(() => { span.remove(); }, 6000);
+}, 300);
+</script>
+
+</body>
+</html>
