@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleksi Sepak Bola U-15 2025 - Garuda Muda Soccer Academy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e9f1f8;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background: #004aad;
+            color: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        header img {
+            max-width: 90px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+        form {
+            background: white;
+            max-width: 550px;
+            margin: 20px auto;
+            padding: 20px 25px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+        input, select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+        button {
+            background: #004aad;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: background 0.3s, transform 0.1s;
+        }
+        button:hover {
+            background: #003080;
+            transform: scale(1.03);
+        }
+        .reg-id {
+            font-size: 14px;
+            color: #555;
+            background: #f2f2f2;
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .note {
+            font-size: 13px;
+            color: #666;
+            margin-top: 15px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #004aad;
+            color: white;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Soccerball.svg" alt="Logo Sepak Bola">
+    <h1>Garuda Muda Soccer Academy</h1>
+    <p>Seleksi Sepak Bola U-15 2025</p>
+    <p>Federasi Sepak Bola Nasional</p>
+</header>
+
+<form onsubmit="event.preventDefault(); alert('✅ Pendaftaran Berhasil!\nNomor Registrasi: ' + document.getElementById('reg').innerText + '\nTunggu konfirmasi melalui WhatsApp.');">
+    <div class="reg-id">
+        Nomor Registrasi: <span id="reg"></span>
+    </div>
+
+    <label>Nama Lengkap</label>
+    <input type="text" placeholder="Masukkan nama lengkap">
+
+    <label>Tanggal Lahir</label>
+    <input type="date">
+
+    <label>Posisi Bermain</label>
+    <select>
+        <option value="">-- Pilih Posisi --</option>
+        <option>Penyerang</option>
+        <option>Gelandang</option>
+        <option>Bek</option>
+        <option>Kiper</option>
+    </select>
+
+    <label>Klub Asal</label>
+    <input type="text" placeholder="Nama klub atau sekolah">
+
+    <label>Nomor Punggung Favorit</label>
+    <input type="text" placeholder="Boleh angka atau huruf">
+
+    <label>Nomor WhatsApp</label>
+    <input type="text" placeholder="08xxxxxxxxxx atau bebas">
+
+    <label>Alasan Ingin Bergabung</label>
+    <textarea rows="4" placeholder="Tulis alasan kamu"></textarea>
+
+    <button type="submit">Kirim Pendaftaran</button>
+
+    <div class="note">
+        <b>Syarat & Ketentuan:</b><br>
+        - Peserta berusia maksimal 15 tahun.<br>
+        - Sehat jasmani dan rohani.<br>
+        - Mematuhi peraturan seleksi.<br>
+        - Data ini hanya simulasi (tidak akan dikirim ke panitia).
+    </div>
+</form>
+
+<footer>
+    © 2025 Garuda Muda Soccer Academy - Semua Hak Dilindungi
+</footer>
+
+<script>
+    // Nomor registrasi acak
+    document.getElementById("reg").innerText = "U15-" + Math.floor(Math.random() * 90000 + 10000);
+</script>
+
+</body>
+  </html>
