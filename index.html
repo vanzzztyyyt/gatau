@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Turnamen IFFHS U-15</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0e1a2b;
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+        header {
+            background: linear-gradient(to right, #0e1a2b, #003366);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+        header img {
+            height: 70px;
+            vertical-align: middle;
+            margin: 0 10px;
+        }
+        header h1 {
+            margin: 5px 0 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            background: white;
+            color: black;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.4);
+            text-align: center;
+        }
+        .reg-number {
+            background: #003366;
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        #qrcode {
+            margin: 10px auto;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: #003366;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #002244;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="https://upload.wikimedia.org/wikipedia/id/6/64/Logo_PSSI.png" alt="Logo PSSI">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Logo_Garuda_Football.png" alt="Garuda Logo">
+    <img src="https://upload.wikimedia.org/wikipedia/en/3/3d/IFFHS_logo.png" alt="IFFHS Logo">
+    <h1>PENDAFTARAN TURNAMEN IFFHS U-15</h1>
+    <p>Federasi Sepak Bola Nasional - PSSI</p>
+</header>
+
+<div class="container">
+    <div class="reg-number">Nomor Registrasi: U15-<span id="regID"></span></div>
+    <div id="qrcode"></div>
+
+    <form onsubmit="event.preventDefault(); alert('Pendaftaran berhasil dikirim!');">
+        <label>Nama Lengkap</label>
+        <input type="text" placeholder="Masukkan nama lengkap Anda" required>
+
+        <label>Tanggal Lahir</label>
+        <input type="date" required>
+
+        <label>Posisi Bermain</label>
+        <select required>
+            <option value="">-- Pilih Posisi --</option>
+            <option>Goalkeeper</option>
+            <option>Defender</option>
+            <option>Midfielder</option>
+            <option>Forward</option>
+        </select>
+
+        <label>Klub Asal</label>
+        <input type="text" placeholder="Nama klub atau sekolah Anda" required>
+
+        <label>Nomor Punggung Favorit</label>
+        <input type="number" min="1" max="99" placeholder="Contoh: 10">
+
+        <label>Nomor WhatsApp</label>
+        <input type="tel" placeholder="08xxxxxxxxxx" required>
+
+        <button type="submit">Kirim Pendaftaran</button>
+    </form>
+</div>
+
+<footer>
+    &copy; 2025 IFFHS U-15 Tournament Committee. All Rights Reserved.
+</footer>
+
+<!-- QR Code JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+    // Generate random registration number
+    const regID = Math.floor(10000 + Math.random() * 90000);
+    document.getElementById("regID").innerText = regID;
+
+    // Create QR Code
+    new QRCode(document.getElementById("qrcode"), {
+        text: `Nomor Registrasi: U15-${regID} | Turnamen IFFHS U-15 PSSI`,
+        width: 120,
+        height: 120
+    });
+</script>
+
+</body>
+</html>
